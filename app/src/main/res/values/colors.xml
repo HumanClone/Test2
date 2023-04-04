@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lavender">#FFBB86FC</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="logo">#4F5872</color>
+    //colours to be used for the themes
+    //light
+    <color name="black_lt">#2C3333</color>
+    <color name="darkGreen_lt">#2E4F4F</color>
+    <color name="green_lt">#0E8388</color>
+    <color name="lightGreen_lt">#CBE4DE</color>
+
+
+    //dark
+    <color name="blue_dt">#37306B</color>
+    <color name="purple_dt">#66347F</color>
+    <color name="magenta_dt">#9E4784</color>
+    <color name="salmon_dt">#D27685</color>
+
+</resources>

@@ -24,7 +24,8 @@ class Login : AppCompatActivity() {
 
     fun log(view: View)
     {
-        val intent = Intent(this, Main_Menu::class.java)
+        //val intent = Intent(this, Main_Menu::class.java)
+        val intent = Intent(this, Features ::class.java)
         startActivity(intent)
     }
 }

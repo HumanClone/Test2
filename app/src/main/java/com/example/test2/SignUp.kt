@@ -22,8 +22,15 @@ class SignUp : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
         auth = Firebase.auth
-    }
+        button_w.setOnClickListener()
+        {
 
+        }
+
+    }
+    val password=findViewById<EditText>(R.id.editPassword)
+    val email=findViewById<EditText>(R.id.editEmailAddress2)
+    val button_w=findViewById<Button>(R.id.button2)
 
     fun login(view: View)
     {
@@ -37,16 +44,12 @@ class SignUp : AppCompatActivity()
         startActivity(intent)
     }
 
-    val password=findViewById<EditText>(R.id.editPassword)
-    val email=findViewById<EditText>(R.id.editEmailAddress2)
-    val button_w=findViewById<Button>(R.id.button2)
-
-    val enter_password= password.text.toString()
-    val enter_email=email.text.toString()
 
 
     fun sign()
     {
+        val enter_password= password.text.toString()
+        val enter_email=email.text.toString()
 
         auth.createUserWithEmailAndPassword(enter_email, enter_password).addOnCompleteListener(this)
         { task ->
@@ -60,7 +63,11 @@ class SignUp : AppCompatActivity()
                 Toast.makeText(baseContext, "Authentication failed.",
                     Toast.LENGTH_SHORT).show()
             }
-        }
+        }.addOnFailureListener(this)
+        {
+//            exception->
+//            Toast.makeText(this.message,Toast.LENGTH_LONG).show()
+       }
     }
 
 }

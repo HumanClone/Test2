@@ -11,13 +11,15 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
+import java.time.Instant
 
 class SignUp : AppCompatActivity()
 {
 
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -27,8 +29,7 @@ class SignUp : AppCompatActivity()
 
     fun login(view: View)
     {
-        val intent = Intent(this, Login::class.java)
-        startActivity(intent)
+
     }
 
     fun back(view: View)
@@ -54,6 +55,19 @@ class SignUp : AppCompatActivity()
                 // Sign in success, update UI with the signed-in user's information
                 Log.d(TAG, "createUserWithEmail:success")
                 val user = auth.currentUser
+                database.child("users").child(user.toString()).child("TimeCreation").setValue(
+                    Instant.now())
+                    .addOnSuccessListener {
+                        // Success message
+                        val intent =  Intent(getBaseContext(), Main_Menu::class.java)
+                        startActivity(intent)
+                    }
+                    .addOnFailureListener {
+                        // Failure message
+                    }
+
+
+
             } else {
                 // If sign in fails, display a message to the user.
                 Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -61,6 +75,10 @@ class SignUp : AppCompatActivity()
                     Toast.LENGTH_SHORT).show()
             }
         }
+
+
+
+
     }
 
 }

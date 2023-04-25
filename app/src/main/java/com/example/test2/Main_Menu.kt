@@ -1,24 +1,32 @@
 package com.example.test2
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.test2.databinding.ActivityMainMenuBinding
-
+import com.google.firebase.auth.FirebaseAuth
 
 class Main_Menu : AppCompatActivity() {
     lateinit var binding:ActivityMainMenuBinding
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if (getIntent().getStringExtra("darkmode").toBoolean())
+        {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
 
         binding.apply {
             toggle =
@@ -70,6 +78,8 @@ class Main_Menu : AppCompatActivity() {
         menuInflater.inflate(R.menu.nav_menu , menu)
         return true
     }
+
+
 
 
 
